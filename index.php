@@ -6,17 +6,6 @@ require_once __DIR__.'/Classes/Food.php';
 require_once __DIR__.'/Classes/Toy.php';
 require_once __DIR__.'/Classes/Bed.php';
 
-foreach($arrayProdotti as $key => $product){
-
-    if($product['categoryId'] == 1){
-
-        $prodotto= new Food(...$product);
-
-        echo $prodotto;
-
-    }
-
-}
 
 ?>
 
@@ -59,30 +48,150 @@ foreach($arrayProdotti as $key => $product){
         
     </head>
     
-    <body class="debug">
+    <body>
 
-        <div id="app">
 
-        </div>
-        
-        <!-- header -->
-        <header>
-            
-        </header>
-        <!-- fine header -->
         
         <!-- main -->
         <main>
-            
+            <div class="container">
+                <div class="row">
+                    <?php
+                            foreach($arrayProdotti as $key => $product){
+                                
+                                if($product['categoryId'] == 1){
+                                    
+                                    $prodotto = new Food(...array_values($product));
+                                    
+                                }
+                                
+                                elseif($product['categoryId']==2 ){
+                                    
+                                    $prodotto = new Toy(...array_values($product));
+                                    
+                                }
+                                
+                                elseif($product['categoryId']==3){
+                                    
+                                    $prodotto = new Bed(...array_values($product));
+                                    
+                                }
+                                
+                                
+                    ?>
+
+                        <div class="col-auto">
+                            <div class="card text-center">
+
+                                <?php
+                            
+                                    foreach($prodotto as $key => $property){
+
+                                        if (get_class($prodotto) =='Food'){
+
+                                            if(is_bool($property) && $property == true){
+
+                                                echo "<div>$key? Yes </div>";
+
+                                            }
+                                            elseif(is_bool($property) && $property == false){
+
+                                                echo "<div>$key? No </div>";
+
+                                            }
+
+                                            elseif (is_float($property)){
+
+                                               $replacedString = str_replace('.',',',$property);
+
+                                               echo "<div>$key: $replacedString € </div>";
+
+                                            }
+
+                                            elseif(isset($property)){
+
+                                                echo "<div>$key: $property </div>";
+
+                                            }
+
+                                        }
+
+                                        elseif (get_class($prodotto) =='Toy'){
+
+                                            if(is_bool($property) && $property == true){
+
+                                                echo "<div>$key? Yes </div>";
+                                            }
+
+                                            elseif(is_bool($property) && $property == false){
+
+                                                echo "<div>$key? No </div>";
+
+                                            }
+
+                                            elseif (is_float($property)){
+
+                                                $replacedString = str_replace('.',',',$property);
+ 
+                                                echo "<div>$key: $replacedString € </div>";
+ 
+                                            }
+
+                                            elseif(isset($property)){
+
+                                                echo "<div>$key: $property </div>";
+
+                                            }
+
+                                        }
+
+                                        if (get_class($prodotto) =='Bed'){
+
+                                            if(is_bool($property) && $property == true){
+
+                                                echo "<div>$key? Yes </div>";
+
+                                            }
+
+                                            elseif(is_bool($property) && $property == false){
+
+                                                echo "<div>$key? No </div>";
+
+                                            }
+
+                                            elseif (is_float($property)){
+
+                                                $replacedString = str_replace('.',',',$property);
+ 
+                                                echo "<div>$key: $replacedString € </div>";
+ 
+                                            }
+                                            elseif(isset($property)){
+
+                                                echo "<div>$key: $property </div>";
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    echo 'category:'.get_class($prodotto);
+                                    
+                                ?>
+
+                            </div>
+
+                        </div>
+                    <?php
+                        
+                    }
+                    ?>
+
+                </div>
+            </div>
         </main>
         <!-- fine main -->
-
-        <!-- foooter -->
-        <footer>
-            
-        </footer>
-        <!-- fine footer -->
-        
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
         <script src="js/my-script.js"></script>
