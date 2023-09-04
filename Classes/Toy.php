@@ -4,15 +4,15 @@ require_once __DIR__.'/Product.php';
 class Toy extends Product{
 
     public $materials;
-    public $toytype;
+    public $toyType;
 
-    public function __construct($_name, $_description, $_price, $_materials, $_toytype)
+    public function __construct($_categoryId, $_name, $_description, $_price, $_isForDogs, $_isForCats, $_materials, $_toyType)
     {
 
-        parent:: __construct($_name, $_description, $_price, $_isForDogs=true, $_isForCats=true);
+        parent:: __construct($_categoryId, $_name, $_description, $_price, $_isForDogs, $_isForCats);
 
         $this->materials=$_materials;
-        $this->toytype=$_toytype;
+        $this->toyType=$_toyType;
 
     }
 }

@@ -1,3 +1,27 @@
+<?php
+
+require_once __DIR__.'/DB.php';
+require_once __DIR__.'/Classes/Product.php';
+require_once __DIR__.'/Classes/Food.php';
+require_once __DIR__.'/Classes/Toy.php';
+require_once __DIR__.'/Classes/Bed.php';
+
+foreach($arrayProdotti as $key => $product){
+
+    if($product['categoryId'] == 1){
+
+        $prodotto= new Food(...$product);
+
+        echo $prodotto;
+
+    }
+
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +29,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>php-oop2</title>
 
         <!--Google Fonts-->
         

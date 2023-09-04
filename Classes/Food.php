@@ -8,10 +8,10 @@ class Food extends Product{
     public $isForCubs; 
     public $nutritionalValues;
 
-    public function __construct($_name, $_description, $_price, $_foodType, $_isForCubs, $_nutritionalValues)
+    public function __construct($_categoryId, $_name, $_description, $_price, $_isForDogs, $_isForCats, $_foodType, $_isForCubs, $_nutritionalValues)
     {
 
-        parent:: __construct($_name, $_description, $_price, $_isForDogs=true, $_isForCats=true);
+        parent:: __construct($_categoryId, $_name, $_description, $_price, $_isForDogs, $_isForCats);
         $this->foodType=$_foodType;
         $this->isForCubs=$_isForCubs;
         $this->nutritionalValues=$_nutritionalValues;
