@@ -89,9 +89,6 @@ class User{
 
         if($this->getter($this->ccExpirationDate) > date('Y/m')){
 
-            echo $this->getter($this->ccExpirationDate);
-
-
             foreach($this->cart as $productId){
 
                 foreach($_arrayprodotti as $product){
@@ -100,6 +97,7 @@ class User{
 
                         $this->checkout+=$product->price;
                     }
+
                 }
 
             }
@@ -130,7 +128,7 @@ class Registered extends User{
     public function __construct($_name, $_surname, $_email, $_phone, $_ccExpirationDate)
     {
         $this->setter($this->name, $_name);
-        
+
         parent::__construct($_surname, $_email, $_phone, $_ccExpirationDate);
         
 
@@ -142,8 +140,6 @@ class Registered extends User{
 
         if($this->getter($this->ccExpirationDate) > date('Y/m')){
 
-            echo $this->getter($this->ccExpirationDate);
-
             foreach($this->cart as $productId){
 
                 foreach($_arrayprodotti as $product){
@@ -152,6 +148,7 @@ class Registered extends User{
 
                         $this->checkout+=$product->price;
                     }
+                    
                 }
 
             }
