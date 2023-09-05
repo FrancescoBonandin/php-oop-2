@@ -1,7 +1,7 @@
 <?php
 
 
-trait CatProUsr{
+trait CatPro{
     
     public $name;
 

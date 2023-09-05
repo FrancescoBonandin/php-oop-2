@@ -58,25 +58,26 @@ require_once __DIR__.'/DB.php';
             <div class="container">
                 <div class="row">
                     <?php
-                            foreach($arrayProdotti as $key => $product){
+
+                        foreach($arrayProdotti as $key => $product){
+                            
+                            if($product['categoryId'] == 1){
                                 
-                                if($product['categoryId'] == 1){
-                                    
-                                    $prodotto = new Food(...array_values($product));
-                                    
-                                }
+                                $prodotto = new Food(...array_values($product));
                                 
-                                elseif($product['categoryId']==2 ){
-                                    
-                                    $prodotto = new Toy(...array_values($product));
-                                    
-                                }
+                            }
+                            
+                            elseif($product['categoryId']==2 ){
                                 
-                                elseif($product['categoryId']==3){
-                                    
-                                    $prodotto = new Bed(...array_values($product));
-                                    
-                                }
+                                $prodotto = new Toy(...array_values($product));
+                                
+                            }
+                            
+                            elseif($product['categoryId']==3){
+                                
+                                $prodotto = new Bed(...array_values($product));
+                                
+                            }
                                 
                                 
                     ?>
@@ -86,82 +87,110 @@ require_once __DIR__.'/DB.php';
 
                                 <div class="card-body">
 
-                                <?php
+                                    <?php
 
-                                    echo "name: $prodotto->name";
-                            
-                                    foreach($prodotto as $key => $property){
+                                        $arrayClass[]=$prodotto;
 
-                                        if($key=='name'){
+                                        echo "name: $prodotto->name";
+                                
+                                        foreach($prodotto as $key => $property){
 
-                                        }
-
-                                        elseif(is_bool($property) ){
-
-                                            if ($property == true){
-
-                                                echo "<div>$key? Yes</div>";
-                                            }
-
-                                         
-                                            else {
-
-                                                echo "<div>$key? No </div>";
-                                            }
-
-                                        }
-
-                                        elseif($key=='isFor'){
-
-                                            echo "$property->icon $property->name ";
-                                        }
-
-                                        elseif (is_float($property)){
-
-                                            $replacedString = str_replace('.',',',$property);
-
-                                            echo "<div>$key: $replacedString € </div>";
-
-                                        }
-
-                                        elseif(isset($property)){
-
-                                            echo "<div>$key: $property </div>";
-
-                                        }
-
-                                        else{
-
-                                            try{
-
-                                                throw new Exception("questo valore($key) non viene controllato o é nullo");
-                                            }
-                                            catch(Exception $exc){
-
-                                                echo $exc->getMessage().
-                                                '<div class="tenor-gif-embed" data-postid="9628120" data-share-method="host" data-aspect-ratio="1.55" data-width="100%">
-                                                <a href="https://tenor.com/view/jurassic-park-ah-you-didnt-say-the-magic-word-say-please-gif-9628120">Jurassic Park Ah GIF</a>from <a href="https://tenor.com/search/jurassic+park-gifs">Jurassic Park GIFs</a></div> 
-                                                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>';
-                                                
+                                            if($key=='name'){
 
                                             }
+
+                                            elseif(is_bool($property) ){
+
+                                                if ($property == true){
+
+                                                    echo "<div>$key? Yes</div>";
+                                                }
+
+                                            
+                                                else {
+
+                                                    echo "<div>$key? No </div>";
+                                                }
+
+                                            }
+
+                                            elseif($key=='isFor'){
+
+                                                echo "$property->icon $property->name ";
+                                            }
+
+                                            elseif (is_float($property)){
+
+                                                $replacedString = str_replace('.',',',$property);
+
+                                                echo "<div>$key: $replacedString € </div>";
+
+                                            }
+
+                                            elseif(isset($property)){
+
+                                                echo "<div>$key: $property </div>";
+
+                                            }
+
+                                            else{
+
+                                                try{
+
+                                                    throw new Exception("questo valore($key) non viene controllato o é nullo");
+                                                }
+                                                catch(Exception $exc){
+
+                                                    echo '<div id="exception">'.$exc->getMessage().'</div>'.
+                                                    '<div class="tenor-gif-embed" data-postid="9628120" data-share-method="host" data-aspect-ratio="1.55" data-width="100%">
+                                                    <a href="https://tenor.com/view/jurassic-park-ah-you-didnt-say-the-magic-word-say-please-gif-9628120">Jurassic Park Ah GIF</a>from <a href="https://tenor.com/search/jurassic+park-gifs">Jurassic Park GIFs</a></div> 
+                                                    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>';
+                                                    
+
+                                                }
+                                            }
+
+
                                         }
 
+                                        echo 'category:'.get_class($prodotto);
+                                        
+                                    ?>
 
-                                    }
-
-                                    echo 'category:'.get_class($prodotto);
-                                    
-                                ?>
-                                    
                                 </div>
 
                             </div>
 
                         </div>
+
                     <?php
                         
-                    }
+                        }
+
+                        echo '<div> guest checkout :';
+
+                        $io=new Guest('bon', 'aaaaa', 348, '2026/05');
+
+                        $io->addToCart($arrayClass[1]);
+                        $io->addToCart($arrayClass[0]);
+                        $io->addToCart($arrayClass[3]);
+
+                        echo $io->pay($arrayClass).'€';
+
+                        echo '</div>';
+
+                        echo '<div> registered checkout :';
+
+                        $tu=new Registered('fra', 'bon', 'aaaaa', 349, '2028/05');
+
+                        $tu->addToCart($arrayClass[1]);
+                        $tu->addToCart($arrayClass[0]);
+                        $tu->addToCart($arrayClass[3]);
+
+                        echo $tu->pay($arrayClass).'€';
+
+                        echo '</div>';
+                    
                     ?>
 
                 </div>

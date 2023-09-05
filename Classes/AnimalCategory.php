@@ -1,10 +1,10 @@
 <?php
 
-require_once __DIR__.'/../Traits/Category-Product-User_Traits.php';
+require_once __DIR__.'/../Traits/Category-Product_Traits.php';
 
 class AnimalCategory{
 
-    use CatProUsr;
+    use CatPro;
     
     protected $id;
     public $icon;
