@@ -91,12 +91,24 @@ require_once __DIR__.'/Classes/Bed.php';
 
                                             if(is_bool($property) && $property == true){
 
-                                                echo "<div>$key? Yes </div>";
+                                                if ($key == 'isForDogs'){
+
+                                                    echo "<div> <i class='fa-solid fa-dog'></i> </div>";
+                                                }
+
+                                                elseif ($key == 'isForCats'){
+
+                                                    echo "<div> <i class='fa-solid fa-cat'></i> </div>";
+                                                }
+
+                                                else {
+
+                                                    echo "<div> $key? Yes </div>";
+                                                }
 
                                             }
-                                            elseif(is_bool($property) && $property == false){
 
-                                                echo "<div>$key? No </div>";
+                                            elseif(is_bool($property) && $property == false){
 
                                             }
 
@@ -120,12 +132,24 @@ require_once __DIR__.'/Classes/Bed.php';
 
                                             if(is_bool($property) && $property == true){
 
-                                                echo "<div>$key? Yes </div>";
+                                                if ($key == 'isForDogs'){
+
+                                                    echo "<div> <i class='fa-solid fa-dog'></i> </div>";
+                                                }
+
+                                                elseif ($key == 'isForCats'){
+
+                                                    echo "<div> <i class='fa-solid fa-cat'></i> </div>";
+                                                }
+
+                                                else {
+
+                                                    echo "<div> $key? Yes </div>";
+                                                }
                                             }
 
                                             elseif(is_bool($property) && $property == false){
 
-                                                echo "<div>$key? No </div>";
 
                                             }
 
@@ -145,17 +169,29 @@ require_once __DIR__.'/Classes/Bed.php';
 
                                         }
 
-                                        if (get_class($prodotto) =='Bed'){
+                                        elseif (get_class($prodotto) =='Bed'){
 
                                             if(is_bool($property) && $property == true){
 
-                                                echo "<div>$key? Yes </div>";
+                                                if ($key == 'isForDogs'){
+
+                                                    echo "<div> <i class='fa-solid fa-dog'></i> </div>";
+                                                }
+
+                                                elseif ($key == 'isForCats'){
+
+                                                    echo "<div> <i class='fa-solid fa-cat'></i> </div>";
+                                                }
+
+                                                else {
+
+                                                    echo "<div> $key? Yes </div>";
+                                                }
 
                                             }
 
                                             elseif(is_bool($property) && $property == false){
 
-                                                echo "<div>$key? No </div>";
 
                                             }
 

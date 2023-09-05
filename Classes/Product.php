@@ -62,6 +62,24 @@ class Product{
 
 
 //     }
+
+//     public function RemoveFromCart($_instance){
+
+//         array_splice($this->cart, array_search($_instance -> productId, $this -> cart), 1 ) 
+//     }
+// 
+//     public function pay(){
+//          
+//          foreach($this->cart as $product){
+// 
+//           $checkout+=product 
+//          
+//          }
+// 
+//       $checkout
+// 
+//      }
+
 // }
 
 // class Guest extends User{
@@ -83,10 +101,12 @@ class Product{
 //         $this->setter($this->surname, $_surname);
 //     }
 
+//      
+
 
 
 
 // }
 
-?>
+// ?>
 
