@@ -80,133 +80,47 @@ require_once __DIR__.'/Classes/Bed.php';
                                 
                     ?>
 
-                        <div class="col-auto">
+                        <div class="col-2 p-3">
                             <div class="card text-center">
 
                                 <?php
                             
                                     foreach($prodotto as $key => $property){
 
-                                        if (get_class($prodotto) =='Food'){
+                                        if(is_bool($property) && $property == true){
 
-                                            if(is_bool($property) && $property == true){
+                                            if ($key == 'isForDogs'){
 
-                                                if ($key == 'isForDogs'){
-
-                                                    echo "<div> <i class='fa-solid fa-dog'></i> </div>";
-                                                }
-
-                                                elseif ($key == 'isForCats'){
-
-                                                    echo "<div> <i class='fa-solid fa-cat'></i> </div>";
-                                                }
-
-                                                else {
-
-                                                    echo "<div> $key? Yes </div>";
-                                                }
-
+                                                echo "<div> <i class='fa-solid fa-dog'></i> </div>";
                                             }
 
-                                            elseif(is_bool($property) && $property == false){
+                                            elseif ($key == 'isForCats'){
 
+                                                echo "<div> <i class='fa-solid fa-cat'></i> </div>";
                                             }
 
-                                            elseif (is_float($property)){
+                                            else {
 
-                                               $replacedString = str_replace('.',',',$property);
-
-                                               echo "<div>$key: $replacedString € </div>";
-
-                                            }
-
-                                            elseif(isset($property)){
-
-                                                echo "<div>$key: $property </div>";
-
+                                                echo "<div> $key? Yes </div>";
                                             }
 
                                         }
 
-                                        elseif (get_class($prodotto) =='Toy'){
-
-                                            if(is_bool($property) && $property == true){
-
-                                                if ($key == 'isForDogs'){
-
-                                                    echo "<div> <i class='fa-solid fa-dog'></i> </div>";
-                                                }
-
-                                                elseif ($key == 'isForCats'){
-
-                                                    echo "<div> <i class='fa-solid fa-cat'></i> </div>";
-                                                }
-
-                                                else {
-
-                                                    echo "<div> $key? Yes </div>";
-                                                }
-                                            }
-
-                                            elseif(is_bool($property) && $property == false){
-
-
-                                            }
-
-                                            elseif (is_float($property)){
-
-                                                $replacedString = str_replace('.',',',$property);
- 
-                                                echo "<div>$key: $replacedString € </div>";
- 
-                                            }
-
-                                            elseif(isset($property)){
-
-                                                echo "<div>$key: $property </div>";
-
-                                            }
+                                        elseif(is_bool($property) && $property == false){
 
                                         }
 
-                                        elseif (get_class($prodotto) =='Bed'){
+                                        elseif (is_float($property)){
 
-                                            if(is_bool($property) && $property == true){
+                                            $replacedString = str_replace('.',',',$property);
 
-                                                if ($key == 'isForDogs'){
+                                            echo "<div>$key: $replacedString € </div>";
 
-                                                    echo "<div> <i class='fa-solid fa-dog'></i> </div>";
-                                                }
+                                        }
 
-                                                elseif ($key == 'isForCats'){
+                                        elseif(isset($property)){
 
-                                                    echo "<div> <i class='fa-solid fa-cat'></i> </div>";
-                                                }
-
-                                                else {
-
-                                                    echo "<div> $key? Yes </div>";
-                                                }
-
-                                            }
-
-                                            elseif(is_bool($property) && $property == false){
-
-
-                                            }
-
-                                            elseif (is_float($property)){
-
-                                                $replacedString = str_replace('.',',',$property);
- 
-                                                echo "<div>$key: $replacedString € </div>";
- 
-                                            }
-                                            elseif(isset($property)){
-
-                                                echo "<div>$key: $property </div>";
-
-                                            }
+                                            echo "<div>$key: $property </div>";
 
                                         }
 
