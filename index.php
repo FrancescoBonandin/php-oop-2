@@ -1,10 +1,11 @@
 <?php
 
-require_once __DIR__.'/DB.php';
+require_once __DIR__.'/Classes/AnimalCategory.php';
 require_once __DIR__.'/Classes/Product.php';
 require_once __DIR__.'/Classes/Food.php';
 require_once __DIR__.'/Classes/Toy.php';
 require_once __DIR__.'/Classes/Bed.php';
+require_once __DIR__.'/DB.php';
 
 
 ?>
@@ -80,34 +81,39 @@ require_once __DIR__.'/Classes/Bed.php';
                                 
                     ?>
 
-                        <div class="col-2 p-3">
+                        <div class="col-4 p-3">
                             <div class="card text-center">
 
+                                <div class="card-body">
+
                                 <?php
+
+                                    echo "name: $prodotto->name";
                             
                                     foreach($prodotto as $key => $property){
 
-                                        if(is_bool($property) && $property == true){
+                                        if($key=='name'){
 
-                                            if ($key == 'isForDogs'){
+                                        }
 
-                                                echo "<div> <i class='fa-solid fa-dog'></i> </div>";
+                                        elseif(is_bool($property) ){
+
+                                            if ($property == true){
+
+                                                echo "<div>$key? Yes</div>";
                                             }
 
-                                            elseif ($key == 'isForCats'){
-
-                                                echo "<div> <i class='fa-solid fa-cat'></i> </div>";
-                                            }
-
+                                         
                                             else {
 
-                                                echo "<div> $key? Yes </div>";
+                                                echo "<div>$key? No </div>";
                                             }
 
                                         }
 
-                                        elseif(is_bool($property) && $property == false){
+                                        elseif($key=='isFor'){
 
+                                            echo "$property->icon $property->name ";
                                         }
 
                                         elseif (is_float($property)){
@@ -124,11 +130,30 @@ require_once __DIR__.'/Classes/Bed.php';
 
                                         }
 
+                                        else{
+
+                                            try{
+
+                                                throw new Exception("questo valore($key) non viene controllato o é nullo");
+                                            }
+                                            catch(Exception $exc){
+
+                                                echo '<div class="tenor-gif-embed" data-postid="9628120" data-share-method="host" data-aspect-ratio="1.55" data-width="100%">
+                                                <a href="https://tenor.com/view/jurassic-park-ah-you-didnt-say-the-magic-word-say-please-gif-9628120">Jurassic Park Ah GIF</a>from <a href="https://tenor.com/search/jurassic+park-gifs">Jurassic Park GIFs</a></div> 
+                                                    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>';
+                                                
+
+                                            }
+                                        }
+
+
                                     }
 
                                     echo 'category:'.get_class($prodotto);
                                     
                                 ?>
+                                    
+                                </div>
 
                             </div>
 

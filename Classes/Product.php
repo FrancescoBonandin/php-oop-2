@@ -1,49 +1,58 @@
 <?php
 
+
+require_once __DIR__.'/../Traits/Category-Product-User_Traits.php';
+require_once __DIR__.'/AnimalCategory.php';
+
 class Product{
 
-    protected $productId;
-    public $categoryId;
-    public $name;
-    public $description;
-    public $price;
-    public $isForDogs;
-    public $isForCats;
+    use CatProUsr;
 
-    public function __construct($_categoryId, $_name, $_description, $_price, $_isForDogs, $_isForCats)
+    protected int $productId;
+    public int $categoryId;
+    public string $description;
+    public float $price;
+    public AnimalCategory $isFor;
+
+    public function __construct($_categoryId, $_name, $_description, $_price, $_isFor)
     {   
         $this->productId = rand(0,10**10);
         $this->categoryId = $_categoryId;
         $this->name=$_name;
         $this->description=$_description;
         $this->price=$_price;
-        $this->isForDogs=$_isForDogs;
-        $this->isForCats=$_isForCats;
+        $this->isFor=$_isFor;
 
     }
 
 }
 
 
+
+
 // class User{
 
+
+//     use CatProUsr;
+
 //     protected $id;
-//     protected $name;
 //     protected $surname;
 //     protected $email;
 //     protected $phone;
+//     protected $ccExpirationDate;
 //     public array $cart=[];
 
 
     
-//     public function __construct( $_email, $_phone)
-//     {
+//     public function __construct( $_email, $_phone){
+
 //         $this->setter($this->id, rand(0,(10*10)));
 
 //         $this->setter($this->email, $_email);
 //         $this->setter($this->phone, $_phone);
 
 //     }
+
 //     public function getter($property){
 
 //         return $this->$property;
@@ -65,20 +74,26 @@ class Product{
 
 //     public function RemoveFromCart($_instance){
 
-//         array_splice($this->cart, array_search($_instance -> productId, $this -> cart), 1 ) 
+//         array_splice($this->cart, array_search($_instance -> productId, $this -> cart), 1 );
+
 //     }
-// 
+
 //     public function pay(){
-//          
-//          foreach($this->cart as $product){
-// 
-//           $checkout+=product 
-//          
-//          }
-// 
-//       $checkout
-// 
-//      }
+
+//         $checkout=0.00;
+
+//         if(strtotime($this->ccExpirationDate)<=date('Y/m/d') ){
+
+//             foreach($this->cart as $product){
+    
+//               $checkout+=$product->price;
+             
+//             }
+    
+//         }
+         
+
+//     }
 
 // }
 
@@ -101,12 +116,12 @@ class Product{
 //         $this->setter($this->surname, $_surname);
 //     }
 
-//      
+     
 
 
 
 
 // }
 
-// ?>
+?>
 
